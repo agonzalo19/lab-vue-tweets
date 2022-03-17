@@ -1,24 +1,20 @@
+  
 <template>
-  <div className="tweet">
-    <img
-      src="https://i.imgur.com/9yw1Fyw.jpg"
-      className="profile"
-      alt="profile"
-    />
+<div className="tweet">
+    <Imatge :Imatge="tweet.user.image"/>
 
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">Ironhack</span>
-          <span className="handle">@ironhack</span>
+        <span className= "user">
+          <span className="name">{{ tweet.name }}</span>
+          <span className="handle">{{ tweet.handle }}/span>
         </span>
 
-        <span className="timestamp">Nov 30, 2020</span>
+        <span className="timestamp">{{ tweet.timestamp }}</span>
       </div>
 
       <p className="message">
-        On December 7th, we will be hosting a #webinar that will introduce you
-        to #SQL! Are you ready? 🚀
+        {{ tweet.message }}
       </p>
 
       <div className="actions">
@@ -33,6 +29,27 @@
     <i class="fas fa-ellipsis-h"></i>
   </div>
 </template>
+
+<script>
+import Imatge from "./Tweet-components/Imatge.vue";
+import User from "./Tweet-components/User.vue"
+import Message from "./Tweet-components/Message.vue"
+import Actions from "./Tweet-components/Actions.vue"
+import Timestamp from "./Tweet-components/Actions.vue"
+
+export default{
+    props: {
+        Tweet: Object
+    },
+    components: { 
+      Imatge,
+      User,
+      Message,
+      Actions,
+      Timestamp,
+      }
+}
+</script>
 
 <style scoped>
 a {
